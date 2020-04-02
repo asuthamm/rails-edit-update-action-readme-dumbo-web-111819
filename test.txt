@@ -1,0 +1,38 @@
+# routes.rb
+Rails.application.routes.draw do
+  # get 'restaurants/index'
+  # get 'restaurants/show'
+  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  resources :restaurants, only: [:index, :show, :new, :create]
+end
+
+# restaurants_controller.rb 
+class RestaurantsController < ApplicationController
+  def index
+    @restaurants = Restaurant.all
+  end
+
+  def show
+    @restaurant = Restaurant.find(params[:id]) 
+  end
+end
+
+restaurant.rb 
+class Restaurant < ApplicationRecord
+end
+
+
+index.erb
+<h1>Restaurants</h1>
+<% @restaurants.each do |restaurant|%>
+<p><%= link_to restaurant.name, restaurant %></p>
+<% end %>
+
+<h1>Restaurant</h1>
+<p><%= @restaurant.name%></p>
+<p><%= @restaurant.city%></p>
+<p><%= @restaurant.state%></p>
+<p><%= @restaurant.street_address%></p>
+<p><%= @restaurant.postal_code%></p>
+
+<%= link_to @restaurants, restaurants_path(@restaurants)%>

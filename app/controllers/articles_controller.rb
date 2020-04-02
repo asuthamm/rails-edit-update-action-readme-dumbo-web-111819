@@ -11,8 +11,6 @@ class ArticlesController < ApplicationController
     @article = Article.new
   end
 
-
-
   def create
     @article = Article.new
     @article.title = params[:title]
@@ -25,7 +23,6 @@ class ArticlesController < ApplicationController
   def edit
     # byebug
     @article = Article.find(params[:id])
-    
   end
 
   def update
@@ -36,3 +33,6 @@ class ArticlesController < ApplicationController
   end
 
 end
+
+
+
